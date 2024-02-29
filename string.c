@@ -4,8 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define array_size(array) ( sizeof(array) / sizeof(array[0]) )
-
 // Struct que representa um caractere da String
 typedef struct StringNode {
     char info;
