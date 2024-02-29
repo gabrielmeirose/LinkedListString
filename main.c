@@ -18,16 +18,20 @@ int main(){
 
     // Visualização de StringNodes
     char c = getById(&join, 3)->info;
-    printf("String[2]: %c\n", c);
+    printf("-> String[2]: %c\n", c);
+
+    // getById, changeById e removeById retornam os StringNodes originais
 
     // Modificação de StringNodes
     changeById(&join, 3, ':');
-
     printString(&join);
 
-    c = getById(&join, 3)->info;
-    printf("String[2]: %c\n", c);
+    // Remoção de StringNodes
+    for(int i = 4; i>=0; i--){
+        removeById(&join, i);
+    }
 
+    printString(&join);
 
     return 0;
 };

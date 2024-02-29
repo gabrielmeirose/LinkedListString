@@ -177,12 +177,12 @@ StringNode *getById(String *s, int id){
     return atual;
 }
 
-// Altera um StringNode baseado no id
-void changeById(String *s, int id, char c){
+// Altera um StringNode baseado no id. Retorna StringNode original.
+StringNode *changeById(String *s, int id, char c){
 
     if(id > strSize(s)-1){
         printf("Erro - Id inválido");
-        return;
+        return NULL;
     }
 
     StringNode *atual = s->primeiro;
@@ -193,6 +193,37 @@ void changeById(String *s, int id, char c){
         i++;
     }
 
+    StringNode *modificado = atual;
+
     atual->info = c;
 
+    return modificado;
+
+}
+
+// Remove um StringNode baseado no id. Retorna StringNode original.
+StringNode *removeById(String *s, int id){
+    if(id > strSize(s)-1){
+        printf("Erro - Id inválido");
+        return NULL;
+    }
+
+    if(id == 0){
+        s->primeiro = s->primeiro->proximo;
+        return NULL;
+    }
+
+    StringNode *anterior = s->primeiro;
+    int i = 0;
+
+    while(anterior->proximo != NULL && i+1 != id){
+        anterior = anterior->proximo;
+        i++;
+    }
+
+    StringNode *removido = anterior->proximo;
+
+    anterior->proximo = anterior->proximo->proximo;
+
+    return removido;
 }
